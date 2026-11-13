@@ -185,6 +185,31 @@ a.item:hover{transform:translateY(-4px);border-color:var(--accent)}
 footer{background:var(--ink);color:color-mix(in srgb,var(--paper) 60%,transparent);border-top:1px solid color-mix(in srgb,var(--paper) 12%,transparent);padding:26px 0;font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
+
+/* ---------- interests ---------- */
+.life{background:linear-gradient(180deg,var(--paper),color-mix(in srgb,var(--mint) 7%,var(--paper)))}
+.life .eyebrow{color:var(--mint)}
+.life-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:22px}
+@media (max-width:900px){.life-grid{grid-template-columns:1fr}}
+.life-side{display:grid;gap:22px}
+.lcard{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;text-decoration:none;color:inherit;box-shadow:var(--shadow);transition:transform .25s ease,border-color .25s ease}
+a.lcard:hover{transform:translateY(-4px);border-color:var(--accent)}
+.lcard .art{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.lcard .art svg{display:block;width:100%;height:100%}
+.lcard.big .art{aspect-ratio:16/9}
+.lcard.yoga .art{aspect-ratio:16/7}
+.lcard .lbody{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.lcard h3{font-size:1.5rem}
+.lcard p{color:var(--muted);font-size:15.5px}
+.lcard .tag{font-size:12.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mint)}
+.lcard.big .tag{color:#ff0033}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.facts span{font-size:13px;font-weight:700;padding:5px 11px;border-radius:999px;background:var(--paper-2);color:var(--muted)}
+.lcard.more{border-style:dashed;box-shadow:none;background:transparent;padding:22px;flex-direction:row;align-items:center;gap:16px}
+.lcard.more b{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;border:2px dashed var(--line);font-size:22px;color:var(--muted)}
+.breath{transform-origin:160px 92px;animation:breathe 7s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(.92);opacity:.55}50%{transform:scale(1.06);opacity:.9}}
+
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.3,1)}
 .reveal.in{opacity:1;transform:none}
 @media (max-width:620px){section{padding:70px 0}.wrap{padding:0 16px}.route{--pad:40px}}
@@ -200,6 +225,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <a href="#work">Portfolio</a>
       <a href="#route">Experience</a>
       <a href="#skills">Skills</a>
+      <a href="#life">Interests</a>
       <a href="#connect">Social</a>
       <div class="mail">
         <button class="icon-btn mail-btn" type="button" aria-label="Email Anand" aria-expanded="false" aria-controls="mail-menu">
@@ -373,6 +399,51 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   </div>
 </section>
 
+
+<section class="life" id="life">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Interests</span>
+      <h2>Off the clock</h2>
+      <p>What keeps me balanced and curious when the dashboards are closed.</p>
+    </div>
+    <div class="life-grid">
+      <a class="lcard big reveal" href="https://www.youtube.com/@AnandConsole" target="_blank" rel="noopener">
+        <div class="art"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="yt2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b2350"/><stop offset=".55" stop-color="#4a2f6d"/><stop offset="1" stop-color="#c2552b"/></linearGradient></defs><rect width="320" height="180" fill="url(#yt2)"/>
+<path d="M0 132L40 104L70 118L110 86L150 112L190 78L236 108L270 92L320 114V180H0Z" fill="#1d1838" opacity=".7"/><path d="M0 154L50 134L96 146L140 124L188 142L240 122L320 138V180H0Z" fill="#14112a"/>
+<g fill="#14112a"><path d="M214 124V90L224 82L234 90V124Z"/><rect x="236" y="100" width="16" height="24"/><path d="M60 134V110L68 104L76 110V134Z"/></g>
+<circle cx="160" cy="80" r="26" fill="#ff0033"/><path d="M153 68L172 80L153 92Z" fill="#fff"/>
+<text x="16" y="28" font-family="Fraunces,Georgia,serif" font-size="17" font-weight="800" fill="#fff">Anand Console</text><text x="16" y="42" font-family="Manrope,sans-serif" font-size="8.5" font-weight="700" fill="#fff" opacity=".75">Age of Empires IV · strategy gameplay</text>
+<rect x="266" y="156" width="40" height="15" rx="4" fill="#000" opacity=".7"/><text x="286" y="166.5" text-anchor="middle" font-family="Manrope,sans-serif" font-size="8.5" font-weight="800" fill="#fff">24:16</text></svg></div>
+        <div class="lbody">
+          <span class="tag">YouTube channel</span>
+          <h3>Anand Console</h3>
+          <p>My gaming channel: Age of Empires IV matches and strategy, recorded, edited and published end to end, from chapters and thumbnails to Shorts.</p>
+          <div class="facts"><span>Strategy games</span><span>Video editing</span><span>Shorts</span></div>
+          <span class="go">Watch on YouTube <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+        </div>
+      </a>
+      <div class="life-side">
+        <article class="lcard yoga reveal">
+          <div class="art"><svg viewBox="0 0 320 140" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="yg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe3c4"/><stop offset="1" stop-color="#d9f2ea"/></linearGradient></defs><rect width="320" height="140" fill="url(#yg)"/>
+<circle class="breath" cx="160" cy="62" r="46" fill="#ffb066" opacity=".6"/>
+<path d="M0 112C60 100 110 108 160 104S260 96 320 106V140H0Z" fill="#9bd6c3" opacity=".7"/><path d="M0 124C80 116 160 128 320 118V140H0Z" fill="#43c9a9" opacity=".55"/>
+<g fill="#1a1830"><circle cx="160" cy="44" r="8"/><path d="M160 54c-6 0-9 4-9 10v18h18V64c0-6-3-10-9-10z"/>
+<path d="M151 62c-8 6-16 12-22 22l4 3c6-8 13-14 19-18zM169 62c8 6 16 12 22 22l-4 3c-6-8-13-14-19-18z"/>
+<path d="M132 92c10-8 20-10 28-10s18 2 28 10c-2 4-6 6-10 6h-36c-4 0-8-2-10-6z"/></g></svg></div>
+          <div class="lbody">
+            <span class="tag">Practice</span>
+            <h3>Yoga</h3>
+            <p>A regular practice that keeps me steady: breath, mobility and a quiet start to the day.</p>
+            <div class="facts"><span>Breathwork</span><span>Mobility</span><span>Mindfulness</span></div>
+          </div>
+        </article>
+        <div class="lcard more reveal"><b>+</b><span><strong>More to come</strong><br><span style="color:var(--muted);font-size:15px">Other interests will land here.</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="connect" id="connect">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -385,7 +456,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <a class="tile reveal" href="https://public.tableau.com/app/profile/anand.b3594" target="_blank" rel="noopener"><i style="background:#e97627"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M11 2h2v4h4v2h-4v4h-2V8H7V6h4zM4 12h1.5v2.5H8V16H5.5v2.5H4V16H1.5v-1.5H4zM19 12h1.5v2.5H23V16h-2.5v2.5H19V16h-2.5v-1.5H19zM11.2 16h1.6v2.4h2.4V20h-2.4v2.4h-1.6V20H8.8v-1.6h2.4z"/></svg></i><span><b>Tableau Public</b><small>Published dashboards</small></span></a>
       <a class="tile reveal" href="https://share.streamlit.io/" target="_blank" rel="noopener" data-todo="streamlit"><i style="background:#ff4b4b"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 3 2 20h20zm0 5 5.5 9.5h-11z"/></svg></i><span><b>Streamlit</b><small>Python apps</small></span></a>
       <a class="tile reveal" href="https://www.youtube.com/@AnandConsole" target="_blank" rel="noopener"><i style="background:#ff0033"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.8 15.1V8.9L15.5 12z"/></svg></i><span><b>Anand Console</b><small>YouTube gameplay channel</small></span></a>
-      <a class="tile reveal" href="https://anand-bhadran.github.io/easy-nav/"><i style="background:#ffffff"><svg width="24" height="24" viewBox="0 0 100 100"><path d="M27 40Q50 92 73 40" fill="none" stroke="#19a8a6" stroke-width="11" stroke-linecap="round"/><circle cx="27" cy="36" r="10" fill="#19a8a6"/><circle cx="73" cy="36" r="10" fill="#8ed33f"/></svg></i><span><b>Easy Nav</b><small>My navigation app</small></span></a>
+      <a class="tile reveal" href="https://anand-bhadran.github.io/easy-nav/" target="_blank" rel="noopener"><i style="background:#ffffff"><svg width="24" height="24" viewBox="0 0 100 100"><path d="M27 40Q50 92 73 40" fill="none" stroke="#19a8a6" stroke-width="11" stroke-linecap="round"/><circle cx="27" cy="36" r="10" fill="#19a8a6"/><circle cx="73" cy="36" r="10" fill="#8ed33f"/></svg></i><span><b>Easy Nav</b><small>My navigation app</small></span></a>
       <a class="tile reveal" href="https://github.com/anand-bhadran" target="_blank" rel="noopener"><i style="background:#2b2a3d"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg></i><span><b>GitHub</b><small>Code behind the projects</small></span></a>
       <div class="mail mail-tile reveal">
         <button class="tile mail-btn" type="button" aria-expanded="false" aria-controls="mail-menu-2"><i style="background:#6c5ce7"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg></i><span><b>Email</b><small>Write or copy my address</small></span></button>
@@ -424,10 +495,7 @@ var SHOWCASE = [
     tags:['Tableau','Sales analytics','Territories'] },
   { title:'Streamlit apps', kind:'App', badge:'Coming soon', preview:'streamlit',
     text:'Interactive Python dashboards built with Pandas and Streamlit: data quality checks and GTM metrics you can explore.',
-    tags:['Python','Pandas','Streamlit'] },
-  { title:'Anand Console', kind:'Video', badge:'YouTube', preview:'youtube', url:'https://www.youtube.com/@AnandConsole',
-    text:'My gaming channel: strategy gameplay, recorded, edited and published end to end.',
-    tags:['YouTube','Video editing'] }
+    tags:['Python','Pandas','Streamlit'] }
 ];
 
 /* the little pictures on each card, drawn in SVG */
@@ -469,7 +537,7 @@ var PREVIEWS = {
     var el = document.createElement(it.url ? 'a' : 'article');
     el.className = 'item reveal';
     el.dataset.kind = it.kind;
-    if(it.url){ el.href = it.url; if(!/anand-bhadran\.github\.io/.test(it.url)){ el.target = '_blank'; el.rel = 'noopener'; } }
+    if(it.url){ el.href = it.url; el.target = '_blank'; el.rel = 'noopener'; }   /* every card leads off-site, so open it in a new tab */
     var soon = !it.url;
     el.innerHTML = '<div class="preview">' + (PREVIEWS[it.preview] || '') +
       (it.badge ? '<span class="badge' + (soon ? ' soon' : '') + '">' + it.badge + '</span>' : '') + '</div>' +

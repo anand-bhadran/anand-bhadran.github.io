@@ -193,26 +193,34 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 /* ---------- interests ---------- */
 .life{background:linear-gradient(180deg,var(--paper),color-mix(in srgb,var(--mint) 7%,var(--paper)))}
 .life .eyebrow{color:var(--mint)}
-.life-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:22px}
-@media (max-width:900px){.life-grid{grid-template-columns:1fr}}
-.life-side{display:grid;gap:22px}
+.life-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:1000px){.life-grid{grid-template-columns:1fr 1fr}.life-grid .lcard.big{grid-column:1/-1}.lcard.big .art{aspect-ratio:21/9}}
+@media (max-width:640px){.life-grid{grid-template-columns:1fr}.lcard.big .art{aspect-ratio:16/9}}
 .lcard{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;text-decoration:none;color:inherit;box-shadow:var(--shadow);transition:transform .25s ease,border-color .25s ease}
 a.lcard:hover{transform:translateY(-4px);border-color:var(--accent)}
 .lcard .art{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
-.lcard .art svg{display:block;width:100%;height:100%}
-.lcard.big .art{aspect-ratio:16/9}
-.lcard.yoga .art{aspect-ratio:16/7}
-.lcard .lbody{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
-.lcard h3{font-size:1.5rem}
-.lcard p{color:var(--muted);font-size:15.5px}
+.lcard .art svg,.lcard .art img{display:block;width:100%;height:100%}
+.lcard .art img{object-fit:cover;object-position:50% 60%}
+.lcard .art{aspect-ratio:16/9}
+.facts .pin{display:inline-flex;align-items:center;gap:5px}
+.facts .pin::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent-2)}
+/* the YouTube card looks like a video on YouTube: a rounded thumbnail, channel icon and title */
+.lcard .art.thumb{aspect-ratio:auto;padding:12px 12px 0;border-bottom:0}
+.thumb-frame{position:relative;display:block;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#111}
+.thumb-frame img{transition:transform .6s ease}
+.yt-bar{position:absolute;left:0;bottom:0;height:4px;width:38%;background:#ff0033}   /* YouTube's red "watched" line */
+a.yt:hover .thumb-frame img{transform:scale(1.04)}
+.yt-meta{display:flex;align-items:center;gap:12px}
+.yt-meta img{width:40px;height:40px;border-radius:50%;flex:none}
+.lcard .lbody{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.lcard h3{font-size:1.25rem}
+.lcard p{color:var(--muted);font-size:14.5px;line-height:1.55}
 .lcard .tag{font-size:12.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mint)}
 .lcard.big .tag{color:#ff0033}
 .facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
 .facts span{font-size:13px;font-weight:700;padding:5px 11px;border-radius:999px;background:var(--paper-2);color:var(--muted)}
-.lcard.more{border-style:dashed;box-shadow:none;background:transparent;padding:22px;flex-direction:row;align-items:center;gap:16px}
-.lcard.more b{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;border:2px dashed var(--line);font-size:22px;color:var(--muted)}
-.breath{transform-origin:160px 92px;animation:breathe 7s ease-in-out infinite}
-@keyframes breathe{0%,100%{transform:scale(.92);opacity:.55}50%{transform:scale(1.06);opacity:.9}}
+.lcard.more{margin-top:20px;border-style:dashed;box-shadow:none;background:transparent;padding:12px 18px;flex-direction:row;align-items:center;gap:16px}
+.lcard.more b{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:2px dashed var(--line);font-size:22px;color:var(--muted)}
 
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.3,1)}
 .reveal.in{opacity:1;transform:none}
@@ -284,7 +292,7 @@ a.lcard:hover{transform:translateY(-4px);border-color:var(--accent)}
     <div class="portrait">
       <div class="halo" aria-hidden="true"></div><div class="ring" aria-hidden="true"></div>
       <div class="avatar">
-        <img src="avatar.jpg" alt="An illustrated 3D portrait of Anand Bhadran" width="800" height="800">
+        <img src="assets/avatar.jpg" alt="An illustrated 3D portrait of Anand Bhadran" width="800" height="800">
       </div>
       <div class="orbit" aria-hidden="true">
         <span style="--a:-90deg"><b>Salesforce</b></span>
@@ -412,29 +420,18 @@ a.lcard:hover{transform:translateY(-4px);border-color:var(--accent)}
       <p>What keeps me balanced and curious when the dashboards are closed.</p>
     </div>
     <div class="life-grid">
-      <a class="lcard big reveal" href="https://www.youtube.com/@AnandConsole" target="_blank" rel="noopener">
-        <div class="art"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="yt2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b2350"/><stop offset=".55" stop-color="#4a2f6d"/><stop offset="1" stop-color="#c2552b"/></linearGradient></defs><rect width="320" height="180" fill="url(#yt2)"/>
-<path d="M0 132L40 104L70 118L110 86L150 112L190 78L236 108L270 92L320 114V180H0Z" fill="#1d1838" opacity=".7"/><path d="M0 154L50 134L96 146L140 124L188 142L240 122L320 138V180H0Z" fill="#14112a"/>
-<g fill="#14112a"><path d="M214 124V90L224 82L234 90V124Z"/><rect x="236" y="100" width="16" height="24"/><path d="M60 134V110L68 104L76 110V134Z"/></g>
-<circle cx="160" cy="80" r="26" fill="#ff0033"/><path d="M153 68L172 80L153 92Z" fill="#fff"/>
-<text x="16" y="28" font-family="Fraunces,Georgia,serif" font-size="17" font-weight="800" fill="#fff">Anand Console</text><text x="16" y="42" font-family="Manrope,sans-serif" font-size="8.5" font-weight="700" fill="#fff" opacity=".75">Age of Empires IV · strategy gameplay</text>
-<rect x="266" y="156" width="40" height="15" rx="4" fill="#000" opacity=".7"/><text x="286" y="166.5" text-anchor="middle" font-family="Manrope,sans-serif" font-size="8.5" font-weight="800" fill="#fff">24:16</text></svg></div>
+        <a class="lcard big yt reveal" href="https://www.youtube.com/@AnandConsole" target="_blank" rel="noopener">
+        <div class="art thumb"><span class="thumb-frame"><img src="assets/yt-royal-cannons.jpg" alt="Video thumbnail: Royal Cannons! French vs HRE, an Age of Empires IV battle" width="960" height="540" loading="lazy"><span class="yt-bar" aria-hidden="true"></span></span></div>
         <div class="lbody">
           <span class="tag">YouTube channel</span>
-          <h3>Anand Console</h3>
-          <p>My gaming channel: Age of Empires IV matches and strategy, recorded, edited and published end to end, from chapters and thumbnails to Shorts.</p>
+          <div class="yt-meta"><img src="assets/anand-console-icon.png" alt="" width="40" height="40"><h3>Anand Console</h3></div>
+          <p>My gaming channel: Age of Empires IV matches and strategy, recorded, edited and published end to end.</p>
           <div class="facts"><span>Strategy games</span><span>Video editing</span><span>Shorts</span></div>
           <span class="go">Watch on YouTube <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
         </div>
       </a>
-      <div class="life-side">
         <article class="lcard yoga reveal">
-          <div class="art"><svg viewBox="0 0 320 140" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="yg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe3c4"/><stop offset="1" stop-color="#d9f2ea"/></linearGradient></defs><rect width="320" height="140" fill="url(#yg)"/>
-<circle class="breath" cx="160" cy="62" r="46" fill="#ffb066" opacity=".6"/>
-<path d="M0 112C60 100 110 108 160 104S260 96 320 106V140H0Z" fill="#9bd6c3" opacity=".7"/><path d="M0 124C80 116 160 128 320 118V140H0Z" fill="#43c9a9" opacity=".55"/>
-<g fill="#1a1830"><circle cx="160" cy="44" r="8"/><path d="M160 54c-6 0-9 4-9 10v18h18V64c0-6-3-10-9-10z"/>
-<path d="M151 62c-8 6-16 12-22 22l4 3c6-8 13-14 19-18zM169 62c8 6 16 12 22 22l-4 3c-6-8-13-14-19-18z"/>
-<path d="M132 92c10-8 20-10 28-10s18 2 28 10c-2 4-6 6-10 6h-36c-4 0-8-2-10-6z"/></g></svg></div>
+          <div class="art"><img src="assets/yoga.jpg" alt="An illustrated yoga class in a sunlit studio, everyone in cobra pose" width="1100" height="619" loading="lazy"></div>
           <div class="lbody">
             <span class="tag">Practice</span>
             <h3>Yoga</h3>
@@ -442,9 +439,17 @@ a.lcard:hover{transform:translateY(-4px);border-color:var(--accent)}
             <div class="facts"><span>Breathwork</span><span>Mobility</span><span>Mindfulness</span></div>
           </div>
         </article>
-        <div class="lcard more reveal"><b>+</b><span><strong>More to come</strong><br><span style="color:var(--muted);font-size:15px">Other interests will land here.</span></span></div>
-      </div>
+        <article class="lcard travel reveal">
+          <div class="art"><img src="assets/travel.jpg" alt="A white car parked by the road beside green tea hills in South India" width="1100" height="512" loading="lazy"></div>
+          <div class="lbody">
+            <span class="tag">Travel</span>
+            <h3>South India, by road and rail</h3>
+            <p>I travel a lot across South India, on road trips in my car and on long train rides, sometimes with my wife and sometimes solo.</p>
+            <div class="facts"><span class="pin">Bengaluru</span><span class="pin">Chennai</span><span class="pin">Munnar</span></div>
+          </div>
+        </article>
     </div>
+    <div class="lcard more reveal"><b>+</b><span><strong>More to come</strong> <span style="color:var(--muted);font-size:14.5px">· other interests will land here.</span></span></div>
   </div>
 </section>
 

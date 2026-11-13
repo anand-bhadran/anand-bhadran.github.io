@@ -48,6 +48,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
 .eyebrow::before{content:"";width:22px;height:2px;background:currentColor;border-radius:2px}
 section{padding:96px 0}
+#skills{scroll-margin-top:96px}   /* it has no top padding, so stop below the sticky menu like the other sections */
 .sec-head{display:flex;flex-direction:column;gap:14px;max-width:44rem;margin-bottom:48px}
 .sec-head h2{font-size:clamp(2rem,4.4vw,3rem)}
 .sec-head p{color:var(--muted);font-size:1.08rem}
@@ -58,9 +59,12 @@ section{padding:96px 0}
 .mono{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:800}
 .mono b{width:36px;height:36px;border-radius:11px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:var(--display);font-size:15px;position:relative}
 .mono b::after{content:"";position:absolute;right:-3px;top:-3px;width:10px;height:10px;border-radius:50%;background:var(--accent-2);border:2px solid var(--paper)}
-.links{display:flex;align-items:center;gap:24px}
+.links{display:flex;align-items:center;gap:6px}
 .links a{text-decoration:none;color:var(--muted);font-weight:700;font-size:15px}
-.links a:hover{color:var(--ink)}
+.links > a{padding:7px 13px;border-radius:999px;transition:background .3s ease,color .3s ease}
+.links > a:hover{color:var(--ink);background:color-mix(in srgb,var(--ink) 4%,transparent)}
+.links > a.active{color:var(--ink);background:color-mix(in srgb,var(--ink) 8%,transparent)}   /* the section being viewed */
+.links .mail{margin-left:10px}
 .icon-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);display:grid;place-items:center;cursor:pointer}
 .icon-btn:hover{border-color:var(--accent);color:var(--accent)}
 .mail{position:relative;z-index:20}                 /* its menu opens above the cards and tiles around it */
@@ -374,7 +378,7 @@ a.lcard:hover{transform:translateY(-4px);border-color:var(--accent)}
 <section id="skills" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">Toolkit</span>
+      <span class="eyebrow">Skills</span>
       <h2>What I work with</h2>
     </div>
     <div class="skills">
@@ -596,6 +600,21 @@ var PREVIEWS = {
     root.dataset.theme = dark ? 'light' : 'dark';
     try { localStorage.setItem(KEY, root.dataset.theme); } catch(e){}
   });
+
+  /* top links: highlight the one whose section is in view */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.links > a[href^="#"]'));
+  var spots = navLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var ticking = false;
+  function spy(){
+    ticking = false;
+    var cur = -1, line = innerHeight * 0.4;
+    spots.forEach(function(sec, i){ if(sec && sec.getBoundingClientRect().top <= line) cur = i; });
+    if(innerHeight + scrollY >= document.documentElement.scrollHeight - 4) cur = spots.length - 1;   /* at the very bottom: the last section */
+    navLinks.forEach(function(a, i){ a.classList.toggle('active', i === cur); if(i === cur) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+  }
+  addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(spy); } }, {passive:true});
+  addEventListener('resize', spy);
+  spy();
 
   /* gentle reveals as you scroll */
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.12});
